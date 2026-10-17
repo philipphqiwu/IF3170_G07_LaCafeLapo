@@ -1,0 +1,22 @@
+[
+  {"id": "PKG-01", "w": 3, "l": 4, "h": 2, "value": 85, "weight": 40, "is_fragile": false, "eta": 2},
+  {"id": "PKG-02", "w": 2, "l": 2, "h": 2, "value": 60, "weight": 25, "is_fragile": false, "eta": 1},
+  {"id": "PKG-03", "w": 5, "l": 5, "h": 3, "value": 140, "weight": 70, "is_fragile": false, "eta": 3},
+  {"id": "PKG-04", "w": 1, "l": 2, "h": 1, "value": 30, "weight": 8, "is_fragile": true, "eta": 1},
+  {"id": "PKG-05", "w": 4, "l": 3, "h": 2, "value": 95, "weight": 45, "is_fragile": false, "eta": 2},
+  {"id": "PKG-06", "w": 2, "l": 3, "h": 1, "value": 55, "weight": 20, "is_fragile": false, "eta": 4},
+  {"id": "PKG-07", "w": 3, "l": 3, "h": 3, "value": 110, "weight": 55, "is_fragile": false, "eta": 1},
+  {"id": "PKG-08", "w": 1, "l": 1, "h": 1, "value": 25, "weight": 5, "is_fragile": true, "eta": 2},
+  {"id": "PKG-09", "w": 6, "l": 4, "h": 2, "value": 130, "weight": 60, "is_fragile": false, "eta": 5},
+  {"id": "PKG-10", "w": 2, "l": 2, "h": 1, "value": 40, "weight": 12, "is_fragile": false, "eta": 1},
+  {"id": "PKG-11", "w": 4, "l": 5, "h": 2, "value": 120, "weight": 50, "is_fragile": false, "eta": 2},
+  {"id": "PKG-12", "w": 3, "l": 2, "h": 2, "value": 70, "weight": 28, "is_fragile": true, "eta": 3},
+  {"id": "PKG-13", "w": 1, "l": 4, "h": 1, "value": 45, "weight": 14, "is_fragile": false, "eta": 1},
+  {"id": "PKG-14", "w": 5, "l": 3, "h": 1, "value": 80, "weight": 30, "is_fragile": false, "eta": 4},
+  {"id": "PKG-15", "w": 2, "l": 2, "h": 3, "value": 75, "weight": 35, "is_fragile": false, "eta": 2},
+  {"id": "PKG-16", "w": 3, "l": 3, "h": 1, "value": 65, "weight": 22, "is_fragile": false, "eta": 1},
+  {"id": "PKG-17", "w": 1, "l": 1, "h": 2, "value": 35, "weight": 9, "is_fragile": true, "eta": 5},
+  {"id": "PKG-18", "w": 4, "l": 2, "h": 2, "value": 90, "weight": 38, "is_fragile": false, "eta": 3},
+  {"id": "PKG-19", "w": 6, "l": 5, "h": 2, "value": 150, "weight": 65, "is_fragile": false, "eta": 2},
+  {"id": "PKG-20", "w": 2, "l": 4, "h": 1, "value": 50, "weight": 18, "is_fragile": false, "eta": 1}
+]
