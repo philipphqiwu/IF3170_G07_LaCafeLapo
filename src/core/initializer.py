@@ -61,6 +61,15 @@ def find_lowest_valid_z(
             if on_fragile:
                 continue
 
+        # Paket fragile tidak boleh berada di bawah paket lain: pastikan
+        # tidak ada paket yang menempati sel tepat di atasnya.
+        if package.is_fragile:
+            z_top = z + dz
+            if z_top < evaluator.truck.h and np.any(
+                grid[x : x + dx, y : y + dy, z_top] != 0
+            ):
+                continue
+
         return z
 
     return None
