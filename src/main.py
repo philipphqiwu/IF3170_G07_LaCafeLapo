@@ -39,16 +39,13 @@ class SearchResult:
     extra: dict = field(default_factory=dict)
 
 
-# --------------------------------------------------------------------- dummies
+# ------------------------------------------------------------- hill-climbing
 
 
-def _dummy_run(name, state0, evaluator, seed, **params):
-    """Stub algoritma: kembalikan state awal tanpa pencarian.
+def run_hc_steepest(state0, evaluator, seed, **params):
+    from algorithms.hill_climbing import steepest_ascent
 
-    Placeholder sampai algoritma asli diimplementasikan. Menerima **params
-    agar parameter tiap algoritma sudah bisa dilewatkan lewat CLI.
-    """
-    value = evaluator.evaluate(state0)
+    r = steepest_ascent(state0, evaluator, seed=seed, **params)
     return SearchResult(
         algorithm=name,
         initial_value=value,
@@ -62,20 +59,54 @@ def _dummy_run(name, state0, evaluator, seed, **params):
     )
 
 
-def run_hc_steepest(state0, evaluator, seed, **params):
-    return _dummy_run("hc_steepest", state0, evaluator, seed, **params)
-
-
 def run_hc_stochastic(state0, evaluator, seed, **params):
-    return _dummy_run("hc_stochastic", state0, evaluator, seed, **params)
+    from algorithms.hill_climbing import stochastic
+
+    r = stochastic(state0, evaluator, seed=seed, **params)
+    return SearchResult(
+        algorithm="hc_stochastic",
+        initial_value=r.initial_value,
+        final_value=r.final_value,
+        final_state=r.final_state,
+        history=r.value_history,
+        duration=r.duration,
+        iterations=r.iterations,
+    )
 
 
 def run_hc_sideways(state0, evaluator, seed, **params):
-    return _dummy_run("hc_sideways", state0, evaluator, seed, **params)
+    from algorithms.hill_climbing import sideways
+
+    r = sideways(state0, evaluator, seed=seed, **params)
+    return SearchResult(
+        algorithm="hc_sideways",
+        initial_value=r.initial_value,
+        final_value=r.final_value,
+        final_state=r.final_state,
+        history=r.value_history,
+        duration=r.duration,
+        iterations=r.iterations,
+        extra={"sideways_count": r.sideways_count},
+    )
 
 
 def run_hc_random_restart(state0, evaluator, seed, **params):
-    return _dummy_run("hc_random_restart", state0, evaluator, seed, **params)
+    from algorithms.hill_climbing import random_restart
+
+    r = random_restart(state0, evaluator, seed=seed, **params)
+    return SearchResult(
+        algorithm="hc_random_restart",
+        initial_value=r.initial_value,
+        final_value=r.final_value,
+        final_state=r.final_state,
+        history=r.value_history,
+        duration=r.duration,
+        iterations=r.iterations,
+        extra={
+            "restarts": r.restarts,
+            "iterations_per_restart": r.iterations_per_restart,
+        },
+    )
 
 
 def run_sa(state0, evaluator, seed, **params):
