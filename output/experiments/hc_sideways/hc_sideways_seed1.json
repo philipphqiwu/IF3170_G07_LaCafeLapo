@@ -1,0 +1,619 @@
+{
+  "algorithm": "hc_sideways",
+  "seed": 1,
+  "params": {
+    "max_sideways": 20,
+    "n_neighbors": 30,
+    "max_iter": 1000
+  },
+  "initial_value": 625.0,
+  "final_value": 1195.0,
+  "duration": 0.11561207899649162,
+  "iterations": 36,
+  "history": [
+    625.0,
+    735.0,
+    885.0,
+    960.0,
+    1090.0,
+    1145.0,
+    1160.0,
+    1160.0,
+    1160.0,
+    1185.0,
+    1185.0,
+    1185.0,
+    1185.0,
+    1185.0,
+    1185.0,
+    1185.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0,
+    1195.0
+  ],
+  "extra": {
+    "sideways_count": 28
+  },
+  "initial_placements": [
+    {
+      "id": "PKG-12",
+      "inside": true,
+      "position": [
+        3,
+        18,
+        0
+      ],
+      "orientation": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "PKG-06",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-18",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-20",
+      "inside": true,
+      "position": [
+        8,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-10",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-01",
+      "inside": true,
+      "position": [
+        3,
+        0,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "PKG-17",
+      "inside": true,
+      "position": [
+        7,
+        17,
+        0
+      ],
+      "orientation": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "PKG-02",
+      "inside": true,
+      "position": [
+        3,
+        14,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "PKG-16",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-07",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-11",
+      "inside": true,
+      "position": [
+        5,
+        3,
+        1
+      ],
+      "orientation": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "PKG-14",
+      "inside": true,
+      "position": [
+        4,
+        3,
+        0
+      ],
+      "orientation": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "PKG-15",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-13",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-08",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-04",
+      "inside": true,
+      "position": [
+        8,
+        6,
+        0
+      ],
+      "orientation": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "PKG-09",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-03",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-19",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-05",
+      "inside": true,
+      "position": [
+        3,
+        7,
+        3
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": "PKG-12",
+      "inside": true,
+      "position": [
+        3,
+        1,
+        3
+      ],
+      "orientation": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "PKG-06",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "PKG-18",
+      "inside": true,
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "PKG-20",
+      "inside": true,
+      "position": [
+        8,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-10",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-01",
+      "inside": true,
+      "position": [
+        3,
+        0,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "PKG-17",
+      "inside": true,
+      "position": [
+        2,
+        2,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "PKG-02",
+      "inside": true,
+      "position": [
+        3,
+        14,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "PKG-16",
+      "inside": true,
+      "position": [
+        2,
+        8,
+        0
+      ],
+      "orientation": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "PKG-07",
+      "inside": true,
+      "position": [
+        1,
+        5,
+        0
+      ],
+      "orientation": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "PKG-11",
+      "inside": true,
+      "position": [
+        5,
+        3,
+        1
+      ],
+      "orientation": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "PKG-14",
+      "inside": true,
+      "position": [
+        4,
+        3,
+        0
+      ],
+      "orientation": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "PKG-15",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "PKG-13",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-08",
+      "inside": true,
+      "position": [
+        6,
+        17,
+        0
+      ],
+      "orientation": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "PKG-04",
+      "inside": true,
+      "position": [
+        8,
+        6,
+        0
+      ],
+      "orientation": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "PKG-09",
+      "inside": true,
+      "position": [
+        2,
+        10,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-03",
+      "inside": false,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "PKG-19",
+      "inside": true,
+      "position": [
+        2,
+        10,
+        2
+      ],
+      "orientation": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "id": "PKG-05",
+      "inside": true,
+      "position": [
+        2,
+        16,
+        0
+      ],
+      "orientation": [
+        2,
+        1,
+        0
+      ]
+    }
+  ]
+}
