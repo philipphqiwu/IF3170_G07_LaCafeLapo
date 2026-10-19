@@ -1,0 +1,34 @@
+algorithm,config,seed,population_size,generations,initial_value,final_value,iterations,duration,valid,notes
+hc_steepest,hc_steepest,0,,,1050.0,1050.0,1,0.0057842059977701865,True,
+hc_steepest,hc_steepest,1,,,625.0,1160.0,7,0.020685173003585078,True,
+hc_steepest,hc_steepest,2,,,900.0,1195.0,4,0.012265306999324821,True,
+hc_stochastic,hc_stochastic,0,,,1050.0,1200.0,209,0.022339679999276996,True,
+hc_stochastic,hc_stochastic,1,,,625.0,1165.0,219,0.02264864300377667,True,
+hc_stochastic,hc_stochastic,2,,,900.0,1210.0,165,0.019436872004007455,True,
+hc_sideways,hc_sideways,0,,,1050.0,1235.0,32,0.11578891400131397,True,sideways=28
+hc_sideways,hc_sideways,1,,,625.0,1195.0,36,0.11561207899649162,True,sideways=28
+hc_sideways,hc_sideways,2,,,900.0,1200.0,26,0.08560675699845888,True,sideways=22
+hc_random_restart,hc_random_restart,0,,,1050.0,1210.0,16,0.05373650999536039,True,"restarts=5 per_restart=[3, 4, 1, 6, 2]"
+hc_random_restart,hc_random_restart,1,,,625.0,1185.0,18,0.05157964200043352,True,"restarts=5 per_restart=[8, 2, 3, 1, 4]"
+hc_random_restart,hc_random_restart,2,,,900.0,1215.0,30,0.09322817900101654,True,"restarts=5 per_restart=[7, 7, 3, 6, 7]"
+sa,sa,0,,,1050.0,1215.0,2297,0.2875942309983657,True,stuck=3 best=1215.0
+sa,sa,1,,,625.0,1220.0,2297,0.291079296002863,True,stuck=2 best=1220.0
+sa,sa,2,,,900.0,1225.0,2297,0.2796215979979024,True,stuck=3 best=1225.0
+ga,"pop=10,gen=30",0,10,30,1200.0,1215.0,30,0.04409812000085367,True,pop=10 gens=30
+ga,"pop=10,gen=30",1,10,30,1155.0,1180.0,30,0.039506777000497095,True,pop=10 gens=30
+ga,"pop=10,gen=30",2,10,30,1195.0,1195.0,30,0.04195646599691827,True,pop=10 gens=30
+ga,"pop=30,gen=30",0,30,30,1205.0,1210.0,30,0.11410828399675665,True,pop=30 gens=30
+ga,"pop=30,gen=30",1,30,30,1190.0,1225.0,30,0.11391243700199993,True,pop=30 gens=30
+ga,"pop=30,gen=30",2,30,30,1195.0,1230.0,30,0.11507167200034019,True,pop=30 gens=30
+ga,"pop=50,gen=30",0,50,30,1205.0,1210.0,30,0.18434808700112626,True,pop=50 gens=30
+ga,"pop=50,gen=30",1,50,30,1190.0,1210.0,30,0.18810727399977623,True,pop=50 gens=30
+ga,"pop=50,gen=30",2,50,30,1210.0,1210.0,30,0.16762272900086828,True,pop=50 gens=30
+ga,"pop=30,gen=10",0,30,10,1205.0,1210.0,10,0.05264702300337376,True,pop=30 gens=10
+ga,"pop=30,gen=10",1,30,10,1190.0,1225.0,10,0.04521568299969658,True,pop=30 gens=10
+ga,"pop=30,gen=10",2,30,10,1195.0,1215.0,10,0.04178334499738412,True,pop=30 gens=10
+ga,"pop=30,gen=30",0,30,30,1205.0,1210.0,30,0.1176145319986972,True,pop=30 gens=30
+ga,"pop=30,gen=30",1,30,30,1190.0,1225.0,30,0.11545216000376968,True,pop=30 gens=30
+ga,"pop=30,gen=30",2,30,30,1195.0,1230.0,30,0.11483462499745656,True,pop=30 gens=30
+ga,"pop=30,gen=50",0,30,50,1205.0,1210.0,50,0.1905368349980563,True,pop=30 gens=50
+ga,"pop=30,gen=50",1,30,50,1190.0,1225.0,50,0.2591949979978381,True,pop=30 gens=50
+ga,"pop=30,gen=50",2,30,50,1195.0,1240.0,50,0.29858046600566013,True,pop=30 gens=50
