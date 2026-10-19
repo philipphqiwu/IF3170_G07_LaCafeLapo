@@ -77,7 +77,35 @@ def run_hc_random_restart(state0, evaluator, seed, **params):
 
 
 def run_sa(state0, evaluator, seed, **params):
-    return _dummy_run("sa", state0, evaluator, seed, **params)
+    from algorithms.simulated_annealing import simulated_annealing
+    from core.neighbors import random_neighbor
+
+    r = simulated_annealing(
+        state0,
+        objective=evaluator.evaluate,
+        neighbor=random_neighbor,
+        t0=params.get("t0", 100.0),
+        cooling_rate=params.get("cooling_rate", 0.995),
+        t_min=params.get("t_min", 1e-3),
+        max_iter=params.get("max_iter", 100_000),
+        stuck_threshold=params.get("stuck_threshold", 500),
+        seed=seed,
+    )
+    return SearchResult(
+        algorithm="sa",
+        initial_value=r.initial_value,
+        final_value=r.final_value,
+        final_state=r.final_state,
+        history=r.value_history,
+        duration=r.duration,
+        iterations=r.iterations,
+        extra={
+            "best_value": r.best_value,
+            "stuck_count": r.stuck_count,
+            "prob_history": r.prob_history,
+            "temp_history": r.temp_history,
+        },
+    )
 
 
 def run_ga(state0, evaluator, seed, **params):
