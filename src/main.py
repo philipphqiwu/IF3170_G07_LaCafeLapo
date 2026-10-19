@@ -47,15 +47,14 @@ def run_hc_steepest(state0, evaluator, seed, **params):
 
     r = steepest_ascent(state0, evaluator, seed=seed, **params)
     return SearchResult(
-        algorithm=name,
-        initial_value=value,
-        final_value=value,
-        final_state=state0,
-        history=[value],
-        duration=0.0,
-        iterations=0,
-        initial_state=state0,
-        extra={"params": params, "stub": True},
+        algorithm="hc_steepest",
+        initial_value=r.initial_value,
+        final_value=r.final_value,
+        final_state=r.final_state,
+        history=r.value_history,
+        duration=r.duration,
+        iterations=r.iterations,
+        initial_state=r.initial_state,
     )
 
 
@@ -71,6 +70,7 @@ def run_hc_stochastic(state0, evaluator, seed, **params):
         history=r.value_history,
         duration=r.duration,
         iterations=r.iterations,
+        initial_state=r.initial_state,
     )
 
 
@@ -86,6 +86,7 @@ def run_hc_sideways(state0, evaluator, seed, **params):
         history=r.value_history,
         duration=r.duration,
         iterations=r.iterations,
+        initial_state=r.initial_state,
         extra={"sideways_count": r.sideways_count},
     )
 
@@ -102,6 +103,7 @@ def run_hc_random_restart(state0, evaluator, seed, **params):
         history=r.value_history,
         duration=r.duration,
         iterations=r.iterations,
+        initial_state=r.initial_state,
         extra={
             "restarts": r.restarts,
             "iterations_per_restart": r.iterations_per_restart,
