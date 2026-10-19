@@ -35,6 +35,7 @@ class SearchResult:
     history: list
     duration: float
     iterations: int = None
+    initial_state: State = None
     extra: dict = field(default_factory=dict)
 
 
@@ -46,13 +47,15 @@ def run_hc_steepest(state0, evaluator, seed, **params):
 
     r = steepest_ascent(state0, evaluator, seed=seed, **params)
     return SearchResult(
-        algorithm="hc_steepest",
-        initial_value=r.initial_value,
-        final_value=r.final_value,
-        final_state=r.final_state,
-        history=r.value_history,
-        duration=r.duration,
-        iterations=r.iterations,
+        algorithm=name,
+        initial_value=value,
+        final_value=value,
+        final_state=state0,
+        history=[value],
+        duration=0.0,
+        iterations=0,
+        initial_state=state0,
+        extra={"params": params, "stub": True},
     )
 
 
@@ -129,6 +132,7 @@ def run_sa(state0, evaluator, seed, **params):
         history=r.value_history,
         duration=r.duration,
         iterations=r.iterations,
+        initial_state=r.initial_state,
         extra={
             "best_value": r.best_value,
             "stuck_count": r.stuck_count,
@@ -159,6 +163,7 @@ def run_ga(state0, evaluator, seed, **params):
         history=r.best_history,
         duration=r.duration,
         iterations=r.generations,
+        initial_state=r.initial_best,
         extra={"avg_history": r.avg_history, "population_size": population_size},
     )
 
@@ -177,13 +182,41 @@ ALGORITHMS = {
 
 
 def visualize_state(state, evaluator, out_path=None, title=""):
-    """TODO: render 3D state (truk + paket dalam/luar)."""
-    return
+    """Render 3D state (truk + paket dalam/luar)."""
+    from visualization import render_state
+
+    return render_state(state, evaluator=evaluator, title=title, out_path=out_path)
 
 
-def plot_search_history(result, out_path=None):
-    """TODO: plot objective terhadap iterasi."""
-    return
+def plot_search_history(result, out_path=None, prob_out_path=None):
+    """Plot objective terhadap iterasi (serta acceptance prob khusus SA)."""
+    from visualization import (
+        plot_ga_history,
+        plot_objective_history,
+        plot_sa_acceptance,
+    )
+
+    if result.algorithm == "ga" and "avg_history" in result.extra:
+        fig = plot_ga_history(
+            result.history,
+            result.extra["avg_history"],
+            title=f"GA Objective Value (pop={result.extra.get('population_size')})",
+            out_path=out_path,
+        )
+    else:
+        fig = plot_objective_history(
+            result.history,
+            title=f"{result.algorithm} - Objective Value terhadap Iterasi",
+            out_path=out_path,
+        )
+
+    if result.algorithm == "sa" and "prob_history" in result.extra and prob_out_path:
+        plot_sa_acceptance(
+            result.extra["prob_history"],
+            title=r"SA - $e^{\Delta E / T}$ terhadap Iterasi",
+            out_path=prob_out_path,
+        )
+    return fig
 
 
 # ------------------------------------------------------------------- plumbing
@@ -218,22 +251,23 @@ def build_initial_state(packages, truck, seed, fill_ratio):
     return random_state(packages, truck, seed=seed, fill_ratio=fill_ratio)
 
 
+def _serialize_placements(state):
+    return [
+        {
+            "id": pp.package.id,
+            "inside": pp.inside,
+            "position": list(pp.position),
+            "orientation": list(pp.orientation),
+        }
+        for pp in state.placed
+    ]
+
+
 def save_result(result, seed, params, output_dir):
     """Simpan ringkasan hasil satu run ke JSON di output_dir."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / f"{result.algorithm}_seed{seed}.json"
-
-    placements = []
-    for pp in result.final_state.placed:
-        placements.append(
-            {
-                "id": pp.package.id,
-                "inside": pp.inside,
-                "position": list(pp.position),
-                "orientation": list(pp.orientation),
-            }
-        )
 
     payload = {
         "algorithm": result.algorithm,
@@ -245,7 +279,12 @@ def save_result(result, seed, params, output_dir):
         "iterations": result.iterations,
         "history": list(result.history),
         "extra": result.extra,
-        "placements": placements,
+        "initial_placements": (
+            _serialize_placements(result.initial_state)
+            if result.initial_state is not None
+            else []
+        ),
+        "placements": _serialize_placements(result.final_state),
     }
     with open(path, "w") as f:
         json.dump(payload, f, indent=2)
@@ -324,9 +363,25 @@ def main(argv=None):
             f"valid={valid}({reason}) duration={result.duration:.4f}s"
         )
 
-        visualize_state(state0, evaluator, title="initial")
-        visualize_state(result.final_state, evaluator, title="final")
-        plot_search_history(result)
+        prefix = output_dir / f"{result.algorithm}_seed{seed}"
+        init_state = result.initial_state if result.initial_state is not None else state0
+        visualize_state(
+            init_state,
+            evaluator,
+            out_path=f"{prefix}_initial.png",
+            title=f"{result.algorithm} (seed={seed}) - Initial State",
+        )
+        visualize_state(
+            result.final_state,
+            evaluator,
+            out_path=f"{prefix}_final.png",
+            title=f"{result.algorithm} (seed={seed}) - Final State",
+        )
+        plot_search_history(
+            result,
+            out_path=f"{prefix}_history.png",
+            prob_out_path=f"{prefix}_prob.png" if result.algorithm == "sa" else None,
+        )
 
         path = save_result(result, seed, params, output_dir)
         print(f"  -> saved {path}")
