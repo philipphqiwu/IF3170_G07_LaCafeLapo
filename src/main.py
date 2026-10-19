@@ -40,6 +40,7 @@ class SearchResult:
 
 # --------------------------------------------------------------------- dummies
 
+
 def _dummy_run(name, state0, evaluator, seed, **params):
     """Stub algoritma: kembalikan state awal tanpa pencarian.
 
@@ -80,7 +81,28 @@ def run_sa(state0, evaluator, seed, **params):
 
 
 def run_ga(state0, evaluator, seed, **params):
-    return _dummy_run("ga", state0, evaluator, seed, **params)
+    from algorithms.genetic_algorithm import run as ga_run
+
+    packages = [pp.package for pp in state0.placed]
+    population_size = params.get("population_size", 20)
+    generations = params.get("generations", 50)
+    r = ga_run(
+        packages,
+        state0.truck,
+        population_size=population_size,
+        generations=generations,
+        seed=seed,
+    )
+    return SearchResult(
+        algorithm="ga",
+        initial_value=r.initial_best_value,
+        final_value=r.final_value,
+        final_state=r.final_state,
+        history=r.best_history,
+        duration=r.duration,
+        iterations=r.generations,
+        extra={"avg_history": r.avg_history, "population_size": population_size},
+    )
 
 
 ALGORITHMS = {
@@ -95,6 +117,7 @@ ALGORITHMS = {
 
 # ---------------------------------------------------------------- visualization
 
+
 def visualize_state(state, evaluator, out_path=None, title=""):
     """TODO: render 3D state (truk + paket dalam/luar)."""
     return
@@ -106,6 +129,7 @@ def plot_search_history(result, out_path=None):
 
 
 # ------------------------------------------------------------------- plumbing
+
 
 def _coerce(value):
     """Ubah string CLI menjadi int/float/bool bila memungkinkan."""
@@ -213,7 +237,9 @@ def main(argv=None):
         return 0
 
     if not args.algorithm:
-        raise SystemExit("error: --algorithm wajib diisi (atau pakai --list-algorithms)")
+        raise SystemExit(
+            "error: --algorithm wajib diisi (atau pakai --list-algorithms)"
+        )
 
     packages = load_packages(args.dataset)
     truck = load_truck(args.truck) if args.truck else Truck()
